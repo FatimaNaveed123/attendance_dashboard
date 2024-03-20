@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attand Pro</title>
+  <style>
+    /* Styling for logo */
+    body {
+      background-color: black;
+      color: green;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      height: 100vh; /* Ensure full viewport height */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .purple-color{
+      color: rgb(81, 23, 134);
+    }
+    
+    .logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Styling for each letter of the text */
+    .animated-text span {
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+
+    /* Keyframes for text animation */
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Styling for next screen */
+    .next-screen {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Logo -->
+  <div class="logo">
+    <img src="{{ url_for('static', filename='/dist/img/logo.png') }}" alt="">
+  </div>
+
+  <!-- Animated Text -->
+  <div class="animated-text">
+    <span>A</span>
+    <span>T</span>
+    <span>T</span>
+    <span>E</span>
+    <span>N</span>
+    <span>D</span>
+    <span> </span>
+    <span> </span>
+    <span class="purple-color">P</span>
+    <span class="purple-color">R</span>
+    <span class="purple-color">O</span>
+  </div>
+
+  <!-- Next Screen -->
+  <div class="next-screen">
+    <h2>Welcome to the Login Screen!</h2>
+    <!-- You can add login form or other content here -->
+  </div>
+
+  <script>
+    // JavaScript to trigger text animation and transition to next screen
+    document.addEventListener("DOMContentLoaded", function() {
+      const textSpans = document.querySelectorAll('.animated-text span');
+      let delay = 0;
+      textSpans.forEach((span, index) => {
+        setTimeout(() => {
+          span.style.opacity = '1';
+        }, delay);
+        delay += 100; // Adjust this value to control the delay between each letter
+      });
+
+      // Transition to next screen after 5 seconds (5000 milliseconds)
+      setTimeout(() => {
+        window.location.href = '/login'; // Redirect to login route
+      }, 5000);
+    });
+  </script>
+</body>
+</html>
